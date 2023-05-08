@@ -12,7 +12,7 @@ pipeline {
           }        }
         stage("QA") {
          steps {
-            echo "QA"
+            echo "QA Demo "
           }
         }
    }
