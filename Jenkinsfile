@@ -8,7 +8,7 @@ pipeline {
         }
         stage ("Test") {
          steps {
-            echo "Test"
+            echo "Test12234"
           }        }
         stage("QA") {
          steps {
