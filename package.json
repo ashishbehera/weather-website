@@ -1,6 +1,6 @@
 {
   "name": "weather-webiste",
-  "version": "1.0.12",
+  "version": "1.0.10",
   "description": "",
   "main": "index.js",
   "scripts": {
