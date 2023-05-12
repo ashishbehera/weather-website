@@ -24,12 +24,10 @@ pipeline {
 //                 }
 //             }
 //         }
-       stage('prepare') {
-                 env.GRADLE_USER_HOME = "$WORKSPACE/.gradle"
-          } 
         stage("run backend") {
             steps {
                  echo 'executing gradle...'
+                env.GRADLE_USER_HOME = "$WORKSPACE/.gradle"
                 withGradle() {
                     sh 'chmod +x gradlew'
                     sh './gradlew -v'
