@@ -15,24 +15,23 @@ pipeline {
             echo "QA Demo Test 1236789000567"
           }
         }
-//        stage("run frontend") {
-//             steps {
-//                 echo 'executing yarn...'
-//                 nodejs('NodeJS 18.7.0') {
-//                     sh 'npm config set strict-ssl false'
-//                     sh 'yarn install'
-//                 }
-//             }
-//         }
-        stage("run backend") {
+       stage("run frontend") {
             steps {
-                 echo 'executing gradle...'
-                env.GRADLE_USER_HOME = "$WORKSPACE/.gradle"
-                withGradle() {
-                    sh 'chmod +x gradlew'
-                    sh './gradlew -v'
+                echo 'executing yarn...'
+                nodejs('NodeJS 18.7.0') {
+                    sh 'npm install'
                 }
             }
         }
+//         stage("run backend") {
+//             steps {
+//                  echo 'executing gradle...'
+//                 env.GRADLE_USER_HOME = "$WORKSPACE/.gradle"
+//                 withGradle() {
+//                     sh 'chmod +x gradlew'
+//                     sh './gradlew -v'
+//                 }
+//             }
+//         }
    }
 }
