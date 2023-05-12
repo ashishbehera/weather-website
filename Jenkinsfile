@@ -19,6 +19,7 @@ pipeline {
             steps {
                 echo 'executing yarn...'
                 nodejs('NodeJS 18.7.0') {
+                    sh 'npm config set strict-ssl false'
                     sh 'yarn install'
                 }
             }
