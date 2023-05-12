@@ -24,6 +24,9 @@ pipeline {
 //                 }
 //             }
 //         }
+       stage('prepare') {
+                 env.GRADLE_USER_HOME = "$WORKSPACE/.gradle"
+          } 
         stage("run backend") {
             steps {
                  echo 'executing gradle...'
