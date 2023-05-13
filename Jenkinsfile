@@ -1,8 +1,9 @@
+def gv
 pipeline {
     agent any
     parameters {
-      choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: "")
-      booleanParam(name: 'executeTest', defaultValue: true, description: "")
+      choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+      booleanParam(name: 'executeTest', defaultValue: true, description: '')
     }
     tools {
         maven 'Maven'
@@ -12,6 +13,14 @@ pipeline {
     }
 
     stages {
+    stage('Init') {
+      steps {
+          script {
+              gv = load 'src/script.groovy'
+          }
+      }
+    }
+
         stage('Build') {
       steps {
         echo "Building Verion ${NEW_VERSION}"
@@ -22,6 +31,9 @@ pipeline {
           ]) {
           echo "User Name ${username}"
           echo "Password ${password}"
+          }
+          script {
+              gv.buildApp()
           }
       }
         }
@@ -41,7 +53,6 @@ pipeline {
       steps {
         echo 'QA in Master Branch'
       }
-
         }
         stage('Install Node') {
       steps {
