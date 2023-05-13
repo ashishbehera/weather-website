@@ -10,7 +10,7 @@ pipeline {
           steps {
             echo "Build"
               echo "Building Verion ${NEW_VERSION}"
-              echo "Application Version ${SERVER_CREDENTIALS.Username}"
+              echo "Application Version ${SERVER_CREDENTIALS.usernameVariable}"
           }
         }
         stage ("Test") {
