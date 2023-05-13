@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    
+   tools {nodejs "node"}
+    
     stages {
         stage ("Build") {
           steps {
@@ -15,14 +18,14 @@ pipeline {
             echo "QA Demo Test 1236789000567"
           }
         }
-       stage("run frontend") {
-            steps {
-                echo 'executing yarn...'
-                nodejs('NodeJS 18.7.0') {
-                    sh 'npm install'
-                }
-            }
-        }
+//        stage("run frontend") {
+//             steps {
+//                 echo 'executing yarn...'
+//                 nodejs('NodeJS 18.7.0') {
+//                     sh 'npm install'
+//                 }
+//             }
+//         }
 //         stage("run backend") {
 //             steps {
 //                  echo 'executing gradle...'
@@ -34,4 +37,10 @@ pipeline {
 //             }
 //         }
    }
+    
+    stage('Cloning GIT') {
+        steps {
+            git 'https://github.com/ashishbehera/weather-website.git'
+        }
+    }
 }
