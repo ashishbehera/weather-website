@@ -58,13 +58,13 @@ pipeline {
     
    }
     
-    post {
-        always {
-        }
-        success {
-        }
-        failure{
-        }
-    }
+//     post {
+//         always {
+//         }
+//         success {
+//         }
+//         failure{
+//         }
+//     }
 }
 
