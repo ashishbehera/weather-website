@@ -11,7 +11,7 @@ pipeline {
             echo "Build"
               echo "Building Verion ${NEW_VERSION}"
               withCredentials([
-                  usernamePassword(credentials: 'server_creds', usernameVariable: USER, passwordVariable: PWD)
+                  usernamePassword(credentials: 'server_creds', usernameVariable: 'USER', passwordVariable: 'PWD')
               ]) {
                   sh "Some script {USER} ${PWD}"
               }
