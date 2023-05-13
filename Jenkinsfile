@@ -25,7 +25,7 @@ pipeline {
                 }
             }
         }
-           stage("Install Node") {
+           stage("Run the Weather App") {
             steps {
                 echo 'executing yarn...'
                 nodejs('NodeJS 18.7.0') {
