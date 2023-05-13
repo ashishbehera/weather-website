@@ -1,43 +1,51 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven'
+    }
     environment {
         NEW_VERSION = '1.3.0'
     }
 
     stages {
         stage('Build') {
-            steps {
-                echo "Building Verion ${NEW_VERSION}"
-                withCredentials([
+      steps {
+        echo "Building Verion ${NEW_VERSION}"
+        withCredentials([
             usernamePassword(credentialsId: 'server_creds',
               usernameVariable: 'username',
               passwordVariable: 'password')
           ]) {
-                    echo "User Name ${username}"
-                     echo "Password ${password}"
-
+          echo "User Name ${username}"
+          echo "Password ${password}"
           }
-            }
+      }
         }
         stage('Test') {
-            steps {
-                echo 'Test12345'
+      steps {
+        echo 'Test12345'
           }        }
         stage('QA') {
-            when {
-                branch 'master'
-            }
-            steps {
-                echo 'QA in Master Branch'
-            }
+      when {
+        branch 'master'
+      }
+      steps {
+        echo 'QA in Master Branch'
+      }
         }
         stage('Install Node') {
-            steps {
-                echo 'executing yarn...'
-                nodejs('NodeJS 18.7.0') {
-                    sh 'npm install'
-                }
-            }
+      steps {
+        echo 'executing yarn...'
+        nodejs('NodeJS 18.7.0') {
+          sh 'npm install'
+        }
+      }
+        }
+
+        stage('Install Maven') {
+          steps {
+              sh 'mvn install'
+          }
         }
 
         //     stage('Cloning GIT') {
