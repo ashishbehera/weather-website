@@ -27,7 +27,9 @@ pipeline {
         }
         stage('Test') {
           when {
-            params.executeTest
+        expression {
+          params.executeTest
+        }
           }
       steps {
         echo 'Test12345'
