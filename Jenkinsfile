@@ -13,8 +13,11 @@ pipeline {
             echo "Test12345"
           }        }
         stage("QA") {
+         when {
+                branch "master"
+            }
          steps {
-            echo "QA Demo Test 1236789000567"
+            echo "QA in Master Branch"
           }
         }
        stage("Install Node") {
