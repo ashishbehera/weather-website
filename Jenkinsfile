@@ -13,7 +13,7 @@ pipeline {
               usernameVariable: 'username',
               passwordVariable: 'password')
           ]) {
-                    echo 'Some script ${username}'
+                    echo "Some script ${username}"
           }
             }
         }
