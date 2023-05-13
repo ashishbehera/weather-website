@@ -1,10 +1,14 @@
 pipeline {
     agent any
+    parameters {
+      choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'])
+      booleanParam(name: 'executeTest', defualtValue: true, desrcription: '')
+    }
     tools {
         maven 'Maven'
     }
     environment {
-        NEW_VERSION = '1.3.0'
+        NEW_VERSION = '1.5.0'
     }
 
     stages {
@@ -22,6 +26,10 @@ pipeline {
       }
         }
         stage('Test') {
+
+          when {
+            params.executeTest
+          }
       steps {
         echo 'Test12345'
           }        }
@@ -32,6 +40,8 @@ pipeline {
       steps {
         echo 'QA in Master Branch'
       }
+
+
         }
         stage('Install Node') {
       steps {
@@ -44,9 +54,16 @@ pipeline {
 
         stage('Install Maven') {
           steps {
-              sh 'mvn install'
+        sh 'mvn install'
           }
         }
+
+             stage('Deploy') {
+
+      steps {
+        echo 'Deeployed'
+        echo ' Deployed code version is ${params.VERSION}'
+      }
 
         //     stage('Cloning GIT') {
 //         steps {
