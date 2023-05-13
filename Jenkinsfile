@@ -9,12 +9,10 @@ pipeline {
         stage ("Build") {
           steps {
             echo "Build"
-              echo "Building Verion ${NEW_VERSION}"
-              withCredentials([
-                  usernamePassword(credentials: 'server_creds', usernameVariable: 'USER', passwordVariable: 'PWD')
-              ]) {
-                  sh "Some script {USER} ${PWD}"
-              }
+              echo "Building Verion ${NEW_VERSION}"    
+                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'server_creds', usernameVariable: 'USER', passwordVariable: 'PWD']]) {
+                                    sh "Some script {USER} ${PWD}"
+                     }
           }
         }
         stage ("Test") {
