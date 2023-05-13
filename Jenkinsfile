@@ -52,11 +52,11 @@ pipeline {
       }
         }
 
-        stage('Install Maven') {
-          steps {
-        // sh 'mvn install'
-          }
-        }
+//         stage('Install Maven') {
+//           steps {
+//          sh 'mvn install'
+//           }
+//         }
 
     stage('Deploy') {
       steps {
