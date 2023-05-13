@@ -10,7 +10,11 @@ pipeline {
           steps {
             echo "Build"
               echo "Building Verion ${NEW_VERSION}"
-              echo "Application Version ${SERVER_CREDENTIALS.usernameVariable}"
+              withCredentials([
+                  usernamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable: PWD)
+              ]) {
+                  sh "Some script {USER} ${PWD}"
+              }
           }
         }
         stage ("Test") {
