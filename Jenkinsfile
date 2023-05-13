@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         NEW_VERSION = '1.3.0'
-        SERVER_CREDENTIALS = credentials('server_creds')
+        //SERVER_CREDENTIALS = credentials('server_creds')
     }
     
     stages {
@@ -11,7 +11,7 @@ pipeline {
             echo "Build"
               echo "Building Verion ${NEW_VERSION}"
               withCredentials([
-                  usernamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable: PWD)
+                  usernamePassword(credentials: 'server_creds', usernameVariable: USER, passwordVariable: PWD)
               ]) {
                   sh "Some script {USER} ${PWD}"
               }
