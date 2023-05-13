@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         NEW_VERSION = '1.3.0'
+        SERVER_CREDENTIALS = credentials('server_creds')
     }
     
     stages {
@@ -9,6 +10,7 @@ pipeline {
           steps {
             echo "Build"
               echo "Building Verion ${NEW_VERSION}"
+              echo "Application Version ${SERVER_CREDENTIALS}"
           }
         }
         stage ("Test") {
