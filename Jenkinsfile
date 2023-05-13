@@ -44,7 +44,9 @@ pipeline {
         }
           }
       steps {
-        echo 'Test12345'
+            script {
+              gv.testApp()
+          }
           }        }
         stage('QA') {
       when {
@@ -71,8 +73,9 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        echo 'Deeployed'
-        echo "Deployed code version is ${params.VERSION}"
+        script {
+              gv.deployApp()
+          }
       }
     }
 
