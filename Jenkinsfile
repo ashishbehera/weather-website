@@ -9,7 +9,6 @@ pipeline {
           steps {
             echo "Build"
               echo "Building Verion ${NEW_VERSION}"
-              echo 'Building Verion ${NEW_VERSION}'
           }
         }
         stage ("Test") {
