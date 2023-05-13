@@ -25,14 +25,22 @@ pipeline {
                 }
             }
         }
-           stage("Run the Weather App") {
-            steps {
-                echo 'executing yarn...'
-                nodejs('NodeJS 18.7.0') {
-                    sh 'npm run start'
-                }
-            }
-        }
+        
+        //     stage('Cloning GIT') {
+//         steps {
+//             git 'https://github.com/ashishbehera/weather-website.git'
+//         }
+//     }
+
+//            stage("Run the Weather App") {
+//             steps {
+//                 echo 'executing yarn...'
+//                 nodejs('NodeJS 18.7.0') {
+//                     sh 'npm run start'
+//                 }
+//             }
+//         }
+        
 //         stage("run backend") {
 //             steps {
 //                  echo 'executing gradle...'
@@ -43,11 +51,17 @@ pipeline {
 //                 }
 //             }
 //         }
+    
+    
    }
     
-//     stage('Cloning GIT') {
-//         steps {
-//             git 'https://github.com/ashishbehera/weather-website.git'
-//         }
-//     }
+    post {
+        always {
+        }
+        success {
+        }
+        failure{
+        }
+    }
 }
+
