@@ -26,7 +26,6 @@ pipeline {
       }
         }
         stage('Test') {
-
           when {
             params.executeTest
           }
@@ -40,7 +39,6 @@ pipeline {
       steps {
         echo 'QA in Master Branch'
       }
-
 
         }
         stage('Install Node') {
@@ -58,12 +56,12 @@ pipeline {
           }
         }
 
-             stage('Deploy') {
-
+    stage('Deploy') {
       steps {
         echo 'Deeployed'
-        echo ' Deployed code version is ${params.VERSION}'
+        echo "Deployed code version is ${params.VERSION}"
       }
+    }
 
         //     stage('Cloning GIT') {
 //         steps {
